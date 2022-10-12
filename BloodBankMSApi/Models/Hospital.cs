@@ -5,7 +5,8 @@ namespace BloodBankMSApi.Models
 {
     public class Hospital
     {
-        public int HospitalId { get; set; }
+        public int Id { get; set; }
+        
         [Required]
         public string HospitalName { get; set; }
 
@@ -14,14 +15,15 @@ namespace BloodBankMSApi.Models
 
         [Required]
         public string City { get; set; }
+        
         [Required]
         [RegularExpression(@"^\d{10}$")]
         public long ContactNo { get; set; }
 
         //[ForeignKey]
         [Required]
-        public int AdminBloodBankId { get; set; }
+        public int BloodBankId { get; set; }
         
-        public virtual Admin? Admin { get; set; }
+        public virtual BloodBank? BloodBank { get; set; }
     }
 }

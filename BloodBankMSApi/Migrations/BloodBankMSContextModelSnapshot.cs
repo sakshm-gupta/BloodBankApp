@@ -17,12 +17,12 @@ namespace BloodBankMSApi.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.9")
+                .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("BloodBankMSApi.Models.Admin", b =>
+            modelBuilder.Entity("BloodBankMSApi.Models.BloodBank", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,34 +45,24 @@ namespace BloodBankMSApi.Migrations
                     b.Property<long>("ContactNo")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("Password")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Admins");
+                    b.ToTable("BloodBanks");
                 });
 
             modelBuilder.Entity("BloodBankMSApi.Models.BloodDonationCamp", b =>
                 {
-                    b.Property<int>("BloodDonationCampId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BloodDonationCampId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("AdminBloodBankId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("AdminId")
+                    b.Property<int>("BloodBankId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CampEndDate")
@@ -89,20 +79,18 @@ namespace BloodBankMSApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("BloodDonationCampId");
-
-                    b.HasIndex("AdminId");
+                    b.HasKey("Id");
 
                     b.ToTable("BloodDonationCamps");
                 });
 
             modelBuilder.Entity("BloodBankMSApi.Models.BloodDonor", b =>
                 {
-                    b.Property<int>("BloodDonorId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BloodDonorId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -126,28 +114,33 @@ namespace BloodBankMSApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("BloodDonorId");
+                    b.HasKey("Id");
 
                     b.ToTable("BloodDonors");
                 });
 
             modelBuilder.Entity("BloodBankMSApi.Models.BloodDonorDonation", b =>
                 {
-                    b.Property<int>("BloodDonorDonationId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BloodDonorDonationId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("BloodBankId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BloodDonationCampId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("BloodDonationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("BloodDonorBloodDonorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("BloodDonorId")
+                    b.Property<int>("BloodDonorId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("ExpiryDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<double>("HBCount")
                         .HasColumnType("float");
@@ -158,7 +151,9 @@ namespace BloodBankMSApi.Migrations
                     b.Property<double>("Weight")
                         .HasColumnType("float");
 
-                    b.HasKey("BloodDonorDonationId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("BloodDonationCampId");
 
                     b.HasIndex("BloodDonorId");
 
@@ -167,13 +162,13 @@ namespace BloodBankMSApi.Migrations
 
             modelBuilder.Entity("BloodBankMSApi.Models.BloodInventory", b =>
                 {
-                    b.Property<int>("BloodInventoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BloodInventoryId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("AdminId")
+                    b.Property<int>("BloodBankId")
                         .HasColumnType("int");
 
                     b.Property<int>("BloodGroup")
@@ -185,29 +180,26 @@ namespace BloodBankMSApi.Migrations
                     b.Property<int>("NumberofBottles")
                         .HasColumnType("int");
 
-                    b.HasKey("BloodInventoryId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("AdminId");
+                    b.HasIndex("BloodBankId");
 
                     b.ToTable("BloodInventories");
                 });
 
             modelBuilder.Entity("BloodBankMSApi.Models.Hospital", b =>
                 {
-                    b.Property<int>("HospitalId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HospitalId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("AdminBloodBankId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("AdminId")
+                    b.Property<int>("BloodBankId")
                         .HasColumnType("int");
 
                     b.Property<string>("City")
@@ -221,49 +213,66 @@ namespace BloodBankMSApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("HospitalId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("AdminId");
+                    b.HasIndex("BloodBankId");
 
                     b.ToTable("Hospitals");
                 });
 
-            modelBuilder.Entity("BloodBankMSApi.Models.BloodDonationCamp", b =>
+            modelBuilder.Entity("BloodBankMSApi.Models.User", b =>
                 {
-                    b.HasOne("BloodBankMSApi.Models.Admin", "Admin")
-                        .WithMany()
-                        .HasForeignKey("AdminId");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Navigation("Admin");
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("BloodBankMSApi.Models.BloodDonorDonation", b =>
                 {
+                    b.HasOne("BloodBankMSApi.Models.BloodDonationCamp", "BloodDonationCamp")
+                        .WithMany()
+                        .HasForeignKey("BloodDonationCampId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("BloodBankMSApi.Models.BloodDonor", "BloodDonor")
                         .WithMany()
-                        .HasForeignKey("BloodDonorId");
+                        .HasForeignKey("BloodDonorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BloodDonationCamp");
 
                     b.Navigation("BloodDonor");
                 });
 
             modelBuilder.Entity("BloodBankMSApi.Models.BloodInventory", b =>
                 {
-                    b.HasOne("BloodBankMSApi.Models.Admin", "Admin")
+                    b.HasOne("BloodBankMSApi.Models.BloodBank", "BloodBank")
                         .WithMany()
-                        .HasForeignKey("AdminId")
+                        .HasForeignKey("BloodBankId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Admin");
+                    b.Navigation("BloodBank");
                 });
 
             modelBuilder.Entity("BloodBankMSApi.Models.Hospital", b =>
                 {
-                    b.HasOne("BloodBankMSApi.Models.Admin", "Admin")
+                    b.HasOne("BloodBankMSApi.Models.BloodBank", "BloodBank")
                         .WithMany()
-                        .HasForeignKey("AdminId");
+                        .HasForeignKey("BloodBankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Admin");
+                    b.Navigation("BloodBank");
                 });
 #pragma warning restore 612, 618
         }
