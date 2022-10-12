@@ -1,0 +1,58 @@
+<div class="card p-5 mx-auto" style="width: 50%;">
+    <h2 class="card-title mx-auto">Update Inventory</h2>
+    <form [formGroup]="invForm" (ngSubmit)="onSubmit()">
+        <!-- bloodGroup -->
+        <div class="form-group">
+            <label for="bloodGroup">Blood Group</label>
+            <div *ngFor="let bg of bloodGroup | keyvalue">
+                <div *ngIf="isNumber(bg.value)">
+                    <input type="radio" [value]='bg.value' formControlName="bloodGroup"> {{bg.key}}
+                </div>
+            </div>
+        </div>
+        <div *ngIf="invForm.get('bloodGroup')?.invalid && (invForm.get('bloodGroup')?.dirty || invForm.get('bloodGroup')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="invForm.get('bloodGroup')?.errors?.['required']"></div>
+                Blood group is required.
+        </div>
+       <!--numberofBottles-->
+        <div class="form-group">
+            <label for="numberofBottles">Number of bottles</label>
+            <input type="number" class="form-control" formControlName="numberofBottles">
+        </div>
+        <div *ngIf="invForm.get('numberofBottles')?.invalid && (invForm.get('numberofBottles')?.dirty || invForm.get('numberofBottles')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="invForm.get('numberofBottles')?.errors?.['required']"></div>
+            Number of bottles are required.
+        </div>
+        <!-- bloodBankId -->
+        <div class="form-group">
+            <label for="bloodBankId">Blood Bank Id</label>
+            <select class="form-control" formControlName="bloodBankId">
+                <option *ngFor="let inv of bloodBankList" value="{{inv.id}}">{{inv.id}}</option>
+            </select>
+        </div>
+        <div *ngIf="invForm.get('bloodBankId')?.invalid && (invForm.get('bloodBankId')?.dirty || invForm.get('bloodBankId')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="invForm.get('bloodBankId')?.errors?.['required']"></div>
+                Blood bank id is required.
+        </div>
+        <!-- expiryDate -->
+        <div class="form-group">
+            <label for="expiryDate">Expiry Date</label>
+            <input type="date" class="form-control" formControlName="expiryDate">
+        </div>
+        <div *ngIf="invForm.get('expiryDate')?.invalid && (invForm.get('expiryDate')?.dirty || invForm.get('expiryDate')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="invForm.get('expiryDate')?.errors?.['required']"></div>
+                Expiry date is required.
+        </div>
+ 
+        <div class="form-group">
+            <button type="submit" class="btn btn-success m-3"
+            [disabled]="invForm.invalid">Update</button>
+            <button class="btn btn-outline-info m-3" [routerLink]="['/inventory']">Back</button>
+        </div>
+    
+    </form>
+    </div>

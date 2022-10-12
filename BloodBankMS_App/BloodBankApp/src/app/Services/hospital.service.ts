@@ -30,4 +30,9 @@ export class HospitalService {
   {
     return this.client.get<Hospital>(`${this.apiUrl}/${id}`);
   }
+  add(hospital:Hospital): Observable<Hospital> {
+    return this.client.post<Hospital>(this.apiUrl, hospital, this.httpOptions);
+  }
+ 
+  
 }

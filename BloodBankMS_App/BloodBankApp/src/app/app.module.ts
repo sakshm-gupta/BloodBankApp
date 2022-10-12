@@ -14,6 +14,10 @@ import { UpdateBloodBankComponent } from './Components/update-blood-bank/update-
 import { BloodDonationCampComponent } from './Components/blood-donation-camp/blood-donation-camp.component';
 import { UpdateBloodDonationCampComponent } from './Components/update-blood-donation-camp/update-blood-donation-camp.component';
 import { AddBloodDonationCampComponent } from './Components/add-blood-donation-camp/add-blood-donation-camp.component';
+import { UpdateInventoryComponent } from './Components/update-inventory/update-inventory.component';
+import { ViewInventoryComponent } from './Components/view-inventory/view-inventory.component';
+import { AddInventoryComponent } from './Components/add-inventory/add-inventory.component';
+import { AddHospitalComponent } from './Components/add-hospital/add-hospital.component';
 
 
 @NgModule({
@@ -28,7 +32,12 @@ import { AddBloodDonationCampComponent } from './Components/add-blood-donation-c
     UpdateBloodBankComponent,
     BloodDonationCampComponent,
     UpdateBloodDonationCampComponent,
-    AddBloodDonationCampComponent
+    AddBloodDonationCampComponent,
+    UpdateInventoryComponent,
+    ViewInventoryComponent,
+    AddInventoryComponent,
+    AddHospitalComponent
+    
     
   ],
   imports: [
