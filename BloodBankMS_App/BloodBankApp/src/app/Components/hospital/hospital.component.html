@@ -1,0 +1,43 @@
+
+  
+  <div class="topnav">
+    <a routerLink="/home">Back</a>
+    <h2>HOSPITAL MENU</h2>
+   <a id="logout" routerLink="/">Logout</a>
+  </div>
+  <table class="table table-striped">
+    <thead>
+        <th>Id</th>
+        <th>Hospital Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Contact No</th>
+        <th>BloodBank Name</th>
+        <th>Actions</th>
+    </thead>
+
+    <tbody>
+        
+        <tr *ngFor="let hos of HospitalList">
+            <td>{{hos.id}}</td>
+            <td>{{hos.hospitalName}}</td>
+            <td>{{hos.address}}</td>
+            <td>{{hos.city}}</td>
+            <td>{{hos.contactNo}}</td>
+            <td>{{hos.bloodBankId}}</td>
+            
+
+
+            <td>
+                <button [routerLink]="['updHospital',hos.id]"  class ="btn btn-primary">Update</button>
+                <button (click)="delete(hos.id)" class ="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+
+
+</table>
+  <!-- <footer>
+    <h4>COPYRIGHT © 2022<br>Blood Bank Management<br>ALL RIGHTS RESERVED.</h4>
+  </footer> -->
+  

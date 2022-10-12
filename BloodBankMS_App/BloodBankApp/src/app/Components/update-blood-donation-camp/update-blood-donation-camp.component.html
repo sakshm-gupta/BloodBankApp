@@ -1,0 +1,44 @@
+<h2>Update Blood Donation Camp</h2>
+ 
+<form [formGroup]="campForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="id">Camp Id</label>
+        <input type="text" class="form-control"
+            formControlName="id" readonly>
+    </div>
+    <div class="form-group">
+        <label for="campName">Camp Name</label>
+        <input type="text" class="form-control"
+            formControlName="campName">
+    </div>
+    <div class="form-group">
+        <label for="address">Camp Address</label>
+        <input type="text" class="form-control"
+            formControlName="address">
+    </div>
+    <div class="form-group">
+        <label for="city">Camp City</label>
+        <input type="text" class="form-control"
+            formControlName="city">
+    </div>
+    <div class="form-group">
+        <label for="bloodBankId">Blood Bank Id</label>
+        <input type="number" class="form-control"
+            formControlName="bloodBankId">
+    </div>
+    <div class="form-group">
+        <label for="campStartDate">Camp Start Date</label>
+        <input type="date" class="form-control"
+            formControlName="campStartDate">
+    </div>
+    <div class="form-group">
+        <label for="campEndDate">Camp End Date</label>
+        <input type="date" class="form-control"
+            formControlName="campEndDate">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="!campForm.valid">Update</button>
+        <button class="btn btn-secondary" [routerLink]="['/blooddonationcamp']">Camp List</button>
+    </div>
+ 
+</form>

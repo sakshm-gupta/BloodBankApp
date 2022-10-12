@@ -1,0 +1,33 @@
+<h2>Update Hospital</h2>
+<form [formGroup]="hospForm"  (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="id">Hospital Id</label>
+        <input type="text" class="form-control"
+        formControlName="id"readonly>
+    </div>
+    <div class="form-group">
+        <label for="hospitalName">Hospital Name</label>
+        <input type="text" class="form-control"
+        formControlName="hospitalName">
+    </div>
+    <div class="form-group">
+        <label for="address">Hospital Address</label>
+        <input type="text" class="form-control"
+        formControlName="address">
+    </div>
+    <div class="form-group">
+        <label for="city">Hospital City</label>
+        <input type="text" class="form-control"
+        formControlName="city">
+    </div>
+    <div class="form-group">
+        <label for="contactNo">Hospital Contact</label>
+        <input type="text" class="form-control"
+        formControlName="contactNo">
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="!hospForm.valid">Update</button>
+        
+    </div>
+</form>

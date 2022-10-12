@@ -1,0 +1,29 @@
+<a [routerLink]="['add']" class="btn btn-link">Add</a>
+ 
+<table class="table table-striped">
+    <thead>
+        <th>Id</th>
+        <th>Blood Donation Camp Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Blood Bank Id</th>
+        <th>Camp Start Date</th>
+        <th>Camp End Date</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of campList">
+            <td>{{c.id}}</td>
+            <td>{{c.campName}}</td>
+            <td>{{c.address}}</td>
+            <td>{{c.city}}</td>
+            <td>{{c.bloodBankId}}</td>
+            <td>{{c.campStartDate}}</td>
+            <td>{{c.campEndDate}}</td>
+            <td>
+                <button [routerLink]="['update', c.id]" class="btn btn-primary">Update</button>
+                <button (click)="delete(c.id)" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

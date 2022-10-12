@@ -21,7 +21,7 @@ namespace BloodBankMSApi.Models
         public long ContactNo { get; set; }
 
         //[ForeignKey]
-        [Required]
+        
         public int BloodBankId { get; set; }
         
         public virtual BloodBank? BloodBank { get; set; }
