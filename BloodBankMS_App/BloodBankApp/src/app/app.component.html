@@ -8,9 +8,7 @@
   
   </header>
   
-  
-  
-  <div class="topnav">
+  <div *ngIf="isLoggedin()"class="topnav">
     <a id="home" routerLink="/home">HOME</a>
     <a routerLink="/hospital">HOSPITALS LIST</a>
     <a routerLink="/blooddonationcamp">DONATION CAMPS LIST</a>
@@ -18,7 +16,7 @@
     <a routerLink="/bloodbankmenu">BLOOD BANKS LIST</a>
     <a routerLink="/inventory">INVENTORY</a>
     <a routerLink="/blooddonordonation">DONATIONS LIST</a>
-    <a id="logout" routerLink="/login">LOGOUT</a>
+    <a id="logout" routerLink="/" (click)="logout()">LOGOUT</a>
     
   </div>
 

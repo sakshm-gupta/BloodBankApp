@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using BloodBankMSApi.Models;
+using BloodBankMSApi.Models.Transfer;
 
 namespace BloodBankMSApi.Models
 {
@@ -24,5 +25,7 @@ namespace BloodBankMSApi.Models
         public DbSet<Hospital> Hospitals { get; set; }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<BloodBankMSApi.Models.Transfer.Transfer> Transfer { get; set; }
     }
 }

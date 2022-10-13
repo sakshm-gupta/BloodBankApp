@@ -12,7 +12,7 @@ namespace BloodBankMSApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    
     public class BloodDonorDonationsController : ControllerBase
     {
         private readonly BloodBankMSContext _context;
@@ -89,10 +89,24 @@ namespace BloodBankMSApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            _context.BloodDonorDonations.Add(bloodDonorDonation);
-            //_context.BloodDonorDonations.Add(BloodInventory);
 
+            BloodGroup bloodGroup = _context.BloodDonors.FirstOrDefault(d => d.Id == bloodDonorDonation.BloodDonorId).BloodGroup;
+            BloodInventory inventory = _context.BloodInventories.FirstOrDefault(d => d.BloodBankId == bloodDonorDonation.BloodBankId && d.BloodGroup == bloodGroup);
+            if (inventory == null)
+            {
+                inventory = new BloodInventory();
+                inventory.BloodBankId = bloodDonorDonation.BloodBankId;
+                inventory.BloodGroup = bloodGroup;
+            }
+            inventory.NumberofBottles += bloodDonorDonation.NumberofBottle;
+            _context.BloodInventories.Update(inventory);
+            //await _context.SaveChangesAsync();
+
+
+
+            _context.BloodDonorDonations.Add(bloodDonorDonation);
             await _context.SaveChangesAsync();
+
 
 
             return CreatedAtAction("GetBloodDonorDonation", new { id = bloodDonorDonation.Id }, bloodDonorDonation);

@@ -1,0 +1,38 @@
+<div class="topnav">
+    <a routerLink="/inventory">Back</a>
+    <h1>Transfer</h1>
+   <a id="logout" routerLink="/">Logout</a>
+</div>
+ 
+<form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="fromId">From Blood Bank</label>
+        <select class="form-control" formControlName="fromId">
+            <option *ngFor="let d of bloodBankList" value="{{d.id}}">{{d.bloodBankName}}</option>>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="toId">To Blood Bank</label>
+        <select class="form-control" formControlName="toId">
+            <option *ngFor="let d of bloodBankList" value="{{d.id}}">{{d.bloodBankName}}</option>>
+        </select>
+    </div>
+    <div class = "form-group">
+        <label for = "numberOfBottles">Number Of Bottles</label>
+        <input type="number" class = "form-control" formControlName = "numberOfBottles">
+    </div>
+    
+    <div class="form-group">
+        <label for="bloodGroup">Blood Group</label>
+        <div *ngFor="let bg of bloodGroup | keyvalue">
+            <div *ngIf="isNumber(bg.value)">
+                <input type="radio" [value]='bg.value' formControlName="bloodGroup"> {{bg.key}}
+            </div>
+        </div>
+    </div>
+ 
+    <div class = "form-group">
+        <button type="submit" class = "btn btn-primary" [disabled]="!transferForm.valid">Add</button>
+        <button class = "btn btn-secondary" [routerLink]="['/blooddonor']">Blood Donor List</button>
+    </div>
+</form>
