@@ -1,0 +1,33 @@
+<h2>Donation List</h2>
+<a routerLink="/home">Back</a>
+<a [routerLink]="['add']" class="btn btn-primary">Add Donation</a>
+<table class="table table-striped">
+    <thead>
+        <th>Id</th>
+        <th>Donor Name</th>
+        <th>Number Of Bottles</th>
+        <th>Weight</th>
+        <th>HB Count</th>
+        <th>Blood Donation Camp</th>
+        <th>Blood Bank ID</th>
+        <th>Donation Date</th>
+        <th>Expiry Date</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let donation of donorDonations">
+            <td>{{donation.id}}</td>
+            <td>{{donation.bloodDonor.firstName}}</td>
+            <td>{{donation.numberofBottle}}</td>
+            <td>{{donation.weight}}</td>
+            <td>{{donation.hbCount}}</td>
+            <td>{{donation.bloodDonationCamp.campName}}</td>
+            <td>{{donation.bloodBankId}}</td>
+            <td>{{donation.bloodDonationDate |date}}</td>
+            <td>{{donation.expiryDate | date}}</td>
+            <td>
+                <button class="btn btn-primary" [routerLink]="['update',donation.id]">Update</button>
+                <button class="btn btn-danger" (click)="delete(donation.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

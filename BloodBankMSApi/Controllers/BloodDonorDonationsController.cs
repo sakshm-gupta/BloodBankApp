@@ -24,7 +24,9 @@ namespace BloodBankMSApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BloodDonorDonation>>> GetBloodDonorDonations()
         {
-            return await _context.BloodDonorDonations.ToListAsync();
+            return await _context.BloodDonorDonations.Include(d=>d.BloodDonor).Include(d=>d.BloodDonationCamp).ToListAsync();
+            
+
         }
 
         // GET: api/BloodDonorDonations/5

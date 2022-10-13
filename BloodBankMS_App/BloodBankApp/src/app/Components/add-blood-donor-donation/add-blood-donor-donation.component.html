@@ -1,0 +1,48 @@
+<header><h1>ADD BLOOD DONOR DONATION DETAILS</h1></header>
+ <div class="topnav">
+   <a routerLink="/blooddonor">Back</a>
+  <a id="logout" routerLink="">Logout</a>
+ </div>
+ <br>
+ <div>
+ 
+     <form [formGroup]="donationForm" (ngSubmit)="onSubmit()">
+         <div class="form-group">
+             <label for="bloodDonorId">Blood Donor ID</label>
+             <input type="number" class="form-control" formControlName="bloodDonorId">
+         </div>
+         <div class="form-group">
+             <label for="bloodBankId">Blood Bank ID</label>
+             <input type="number" class="form-control" formControlName="bloodBankId">
+         </div>
+         <div class="form-group">
+             <label for="numberofBottle">Number Of Bottles</label>
+             <input type="number" class="form-control" formControlName="numberofBottle">
+         </div>
+         <div class="form-group">
+             <label for="weight">Weight</label>
+             <input type="number" class="form-control" formControlName="weight">
+         </div>
+         <div class="form-group">
+             <label for="hBCount">HB Count</label>
+             <input type="number" class="form-control" formControlName="hBCount">
+         </div>
+         <div class="form-group">
+             <label for="bloodDonationCampId">Blood Donation Camp ID</label>
+             <input type="number" class="form-control" formControlName="bloodDonationCampId">
+         </div>
+         <div class="form-group">
+             <label for="bloodDonationDate">Blood Donation Date</label>
+             <input type="date" class="form-control" formControlName="bloodDonationDate">
+         </div>
+         <div class="form-group">
+             <label for="expiryDate">Expiry Date</label>
+             <input type="date" class="form-control" formControlName="expiryDate">
+         </div>
+         <div class="form-group">
+             <button class="btn btn-primary" [disabled]="!donationForm.valid" type="submit">Add</button>
+         </div>
+     </form>
+ 
+  
+ 

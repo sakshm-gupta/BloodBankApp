@@ -1,0 +1,36 @@
+<div class="topnav">
+    <a routerLink="/home">Back</a>
+
+    <h1>BLOOD DONOR MENU</h1>
+   
+</div>
+  
+<a [routerLink]="['add']" class = "btn btn-primary">Add Blood Donor</a>
+ 
+<table class = "table table-bordered">
+    <thead class = "thead-dark">
+        <th>Blood Donor ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>City</th>
+        <th>Address</th>
+        <th>Mobile Number</th>
+        <th>Blood Group</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of blooddonors">
+            <td>{{item.id}}</td>
+            <td>{{item.firstName}}</td>
+            <td>{{item.lastName}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.city}}</td>
+            <td>{{item.contactNo}}</td>
+            <td>{{bloodgroup[item.bloodGroup]}}</td>
+            <td>
+                <button [routerLink]="['update', item.id]" class = "btn btn-primary">Update</button>
+                <button (click) = "delete(item.id)" class = "btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

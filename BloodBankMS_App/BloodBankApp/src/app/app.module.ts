@@ -4,7 +4,7 @@ import{HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './Components/login/login.component';
 import { HospitalComponent } from './Components/hospital/hospital.component';
 import { UpdateHospitalComponent } from './Components/update-hospital/update-hospital.component';
@@ -18,6 +18,15 @@ import { UpdateInventoryComponent } from './Components/update-inventory/update-i
 import { ViewInventoryComponent } from './Components/view-inventory/view-inventory.component';
 import { AddInventoryComponent } from './Components/add-inventory/add-inventory.component';
 import { AddHospitalComponent } from './Components/add-hospital/add-hospital.component';
+import { ViewBloodDonorDonationComponent } from './Components/view-blood-donor-donation/view-blood-donor-donation.component';
+import { AddBloodDonorDonationComponent } from './Components/add-blood-donor-donation/add-blood-donor-donation.component';
+import { UpdateBloodDonorDonationComponent } from './Components/update-blood-donor-donation/update-blood-donor-donation.component';
+import { ViewblooddonorComponent } from './Components/view-blood-donor/view-blood-donor.component';
+import { UpdateblooddonorComponent } from './Components/update-blood-donor/update-blood-donor.component';
+import { AddblooddonorComponent } from './Components/add-blood-donor/add-blood-donor.component';
+
+
+
 
 
 @NgModule({
@@ -36,13 +45,20 @@ import { AddHospitalComponent } from './Components/add-hospital/add-hospital.com
     UpdateInventoryComponent,
     ViewInventoryComponent,
     AddInventoryComponent,
-    AddHospitalComponent
+    AddHospitalComponent,
+    ViewBloodDonorDonationComponent,
+    AddBloodDonorDonationComponent,
+    UpdateBloodDonorDonationComponent,
+    ViewblooddonorComponent,
+    UpdateblooddonorComponent,
+    AddblooddonorComponent
+    
     
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,HttpClientModule,ReactiveFormsModule
+    AppRoutingModule,HttpClientModule,ReactiveFormsModule,FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
