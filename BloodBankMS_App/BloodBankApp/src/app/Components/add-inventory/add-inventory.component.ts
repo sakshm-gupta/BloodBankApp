@@ -41,7 +41,7 @@ export class AddInventoryComponent implements OnInit {
     this.invService.add(this.invForm.value as unknown as BloodInventory).subscribe(result => {
       alert('Inventory added successfully');
       //redirect to emp List
-      //this.router.navigate(['inventory']);
+      this.router.navigate(['/inventory']);
     }, err => {
       console.log(err);
       alert(err);

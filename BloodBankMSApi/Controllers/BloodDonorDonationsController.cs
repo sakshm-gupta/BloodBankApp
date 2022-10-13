@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BloodBankMSApi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BloodBankMSApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BloodDonorDonationsController : ControllerBase
     {
         private readonly BloodBankMSContext _context;
@@ -88,7 +90,10 @@ namespace BloodBankMSApi.Controllers
                 return BadRequest(ModelState);
             }
             _context.BloodDonorDonations.Add(bloodDonorDonation);
+            //_context.BloodDonorDonations.Add(BloodInventory);
+
             await _context.SaveChangesAsync();
+
 
             return CreatedAtAction("GetBloodDonorDonation", new { id = bloodDonorDonation.Id }, bloodDonorDonation);
         }

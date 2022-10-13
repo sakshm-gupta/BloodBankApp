@@ -23,6 +23,6 @@ namespace BloodBankMSApi.Models
 
         public DbSet<Hospital> Hospitals { get; set; }
 
-        public DbSet<BloodBankMSApi.Models.User> User { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
