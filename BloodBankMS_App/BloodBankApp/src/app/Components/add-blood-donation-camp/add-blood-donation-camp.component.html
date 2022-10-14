@@ -66,8 +66,7 @@
 
     <div class="form-group">
         <label for="campStartDate">Camp Start Date</label>
-        <input type="date" class="form-control"
-            formControlName="campStartDate">
+        <input type="date" class="form-control"  min="{{date | date:'yyyy-MM-dd'}}"  formControlName="campStartDate">
     </div>
 
     <div *ngIf="campForm.get('campStartDate')?.invalid && 
@@ -82,7 +81,7 @@
 
     <div class="form-group">
         <label for="campEndDate">Camp End Date</label>
-        <input type="date" class="form-control"
+        <input type="date" class="form-control" min="{{this.campForm.get('campStartDate')?.value | date:'yyyy-MM-dd'}}"
             formControlName="campEndDate">
     </div>
 
@@ -98,7 +97,7 @@
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary" [disabled]="!campForm.valid">Add</button>
-        <button class="btn btn-secondary" [routerLink]="['blooddonationcamp']">Camp List</button>
+        <button class="btn btn-secondary" [routerLink]="['/blooddonationcamp']">Camp List</button>
     </div>
  
 </form>

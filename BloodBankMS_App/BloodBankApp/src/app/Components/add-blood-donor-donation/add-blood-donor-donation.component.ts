@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -20,11 +21,17 @@ export class AddBloodDonorDonationComponent implements OnInit {
   donorList!:BloodDonor[];
   bloodBankList!:BloodBank[];
   donationList!:BloodDonationCamp[];
+  campList!:BloodDonationCamp[];
+  date=new Date;
+
   constructor(private client:BloodDonorDonationService,private bloodDonationCampService:BloodDonationCampService,private bloodBankService:BloodBankService,private router: Router,private bloodDonorService:BlooddonorService) {
  
    }
  
    ngOnInit(): void {
+
+    const datePipe = new DatePipe('en-US');
+
     this.donationForm=new FormGroup({
       "bloodDonorId":new FormControl("",Validators.required),
       "numberofBottle":new FormControl("",Validators.required),
@@ -32,8 +39,8 @@ export class AddBloodDonorDonationComponent implements OnInit {
       "hBCount":new FormControl("",Validators.required),
       "bloodDonationCampId":new FormControl("",Validators.required),
       "bloodBankId":new FormControl("",Validators.required),
-      "expiryDate":new FormControl(null,Validators.required),
-      "bloodDonationDate":new FormControl(null,Validators.required),
+      "expiryDate":new FormControl(datePipe.transform("", 'yyyy-MM-dd'),Validators.required),
+      "bloodDonationDate":new FormControl(datePipe.transform("", 'yyyy-MM-dd'),Validators.required)
     });
 
     this.bloodDonorService.getList().subscribe(list =>{
@@ -58,5 +65,11 @@ export class AddBloodDonorDonationComponent implements OnInit {
  
   },
   err => alert(err));
+  }
+
+  filterList(){
+    
+    this.campList = this.donationList.filter(c => c.bloodBankId==this.donationForm.get("bloodBankId")?.value);
+ 
   }
 }

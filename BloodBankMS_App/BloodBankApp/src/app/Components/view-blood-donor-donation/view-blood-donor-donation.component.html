@@ -1,4 +1,48 @@
+<div class="card p-5 mx-auto" style="width: 100%;">
+    <a routerLink="/home">Back</a>
+    <h2 class="card-title mx-auto">Donation List</h2>
+    <a [routerLink]="['add']" class="btn btn-primary my-3" >Add Donation</a>
+ 
+    <table class="table table-striped mt-5">
+        <thead>
+            <th>Id</th>
+            <th>Donor Name</th>
+            <th>Number Of Bottles</th>
+            <th>Weight(in Kg)</th>
+            <th>HB Count((g/dl)</th>
+            <th>Blood Donation Camp</th>
+            <th>Blood Bank</th>
+            <th>Donation Date</th>
+            <th>Expiry Date</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let donation of donorDonations">
+                <td>{{donation.id}}</td>
+                <td>{{donation.bloodDonor.firstName}}</td>
+                <td>{{donation.numberofBottle}}</td>
+                <td>{{donation.weight}}</td>
+                <td>{{donation.hbCount}}</td>
+                <td>{{donation.bloodDonationCamp.campName}}</td>
+                <td>{{donation.bloodBank.bloodBankName}}</td>
+                <td>{{donation.bloodDonationDate |date}}</td>
+                <td>{{donation.expiryDate | date}}</td>
+                <td>
+                    <button class="btn btn-warning m-2" [routerLink]="['update',donation.id]">Update</button>
+                    <button class="btn btn-danger m-2" (click)="delete(donation.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
+
+
+
+
+
+
+
+<!-- 
 
 
 <header>
@@ -38,4 +82,4 @@
             </td>
         </tr>
     </tbody>
-</table>
+</table> -->

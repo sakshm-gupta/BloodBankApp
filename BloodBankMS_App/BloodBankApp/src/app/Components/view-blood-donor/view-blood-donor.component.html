@@ -1,4 +1,47 @@
-<div class="topnav">
+
+
+
+
+
+<div class="card p-5 mx-auto" style="width: 80%;">
+    <a routerLink="/home">Back</a>
+    <h2 class="card-title mx-auto">Blood Donors</h2>
+  
+    <a [routerLink]="['add']" class = "btn btn-primary my-3" >Add Blood Donor</a>
+    <div class="bb">
+        
+        <button [routerLink]="['/blooddonordonation/add']" class="btn btn-primary my-3" style="width:10rem">Donate Blood</button>
+    </div>
+    <table class = "table table-striped mt-5">
+        <thead class = "thead-dark">
+            <th>Blood Donor ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Mobile Number</th>
+            <th>Blood Group</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of blooddonors">
+                <td>{{item.id}}</td>
+                <td>{{item.firstName}}</td>
+                <td>{{item.lastName}}</td>
+                <td>{{item.address}}</td>
+                <td>{{item.city}}</td>
+                <td>{{item.contactNo}}</td>
+                <td>{{bloodgroup[item.bloodGroup]}}</td>
+                <td>
+                    <button [routerLink]="['update', item.id]" class = "btn btn-warning m-2">Update</button>
+                    <button (click) = "delete(item.id)" class = "btn btn-danger m-2">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <div class="topnav">
     <a routerLink="/home">Back</a>
 
     <h2>Blood Donors</h2>
@@ -33,4 +76,5 @@
             </td>
         </tr>
     </tbody>
-</table>
+</table> -->
+

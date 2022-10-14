@@ -31,7 +31,7 @@ export class AddBloodBankComponent implements OnInit {
       //redirect to dept list
       this.router.navigate(['/bloodbankmenu']);
     },err=>{
-      //alert(err);
+      alert(err.message);
       console.log(err);
     })
   }

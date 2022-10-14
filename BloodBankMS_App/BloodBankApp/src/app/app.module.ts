@@ -25,6 +25,7 @@ import { ViewblooddonorComponent } from './Components/view-blood-donor/view-bloo
 import { UpdateblooddonorComponent } from './Components/update-blood-donor/update-blood-donor.component';
 import { AddblooddonorComponent } from './Components/add-blood-donor/add-blood-donor.component';
 import { TransferComponent } from './Components/transfer/transfer.component';
+import { SearchInventoryComponent } from './Components/search-inventory/search-inventory.component';
 
 
 
@@ -53,7 +54,8 @@ import { TransferComponent } from './Components/transfer/transfer.component';
     ViewblooddonorComponent,
     UpdateblooddonorComponent,
     AddblooddonorComponent,
-    TransferComponent
+    TransferComponent,
+    SearchInventoryComponent
     
     
     

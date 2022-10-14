@@ -108,13 +108,13 @@
  
 </form>
  -->
+ <a routerLink="/blooddonationcamp">Back</a>
 
 <h2>Update Blood Donation Camp</h2>
- 
 <form [formGroup]="campForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="id">Camp Id</label>
-        <input type="text" class="form-control"
+        <input type="number" class="form-control"
             formControlName="id" readonly>
     </div>
     <div class="form-group">
@@ -132,19 +132,21 @@
         <input type="text" class="form-control"
             formControlName="city">
     </div>
+    
     <div class="form-group">
-        <label for="bloodBankId">Blood Bank Id</label>
-        <input type="number" class="form-control"
-            formControlName="bloodBankId">
+        <label for="bloodBankId"> Blood Bank</label>
+        <select class="form-control" formControlName="bloodBankId" >
+            <option *ngFor="let d of bloodBankList"  value="{{d.id}}"  >{{d.bloodBankName}}</option>>
+        </select>
     </div>
     <div class="form-group">
         <label for="campStartDate">Camp Start Date</label>
-        <input type="datetime   " class="form-control"
+        <input type="date" class="form-control"  min="{{date | date:'yyyy-MM-dd'}}"
             formControlName="campStartDate">
     </div>
     <div class="form-group">
         <label for="campEndDate">Camp End Date</label>
-        <input type="datetime" class="form-control"
+        <input type="date" class="form-control"  min="{{this.campForm.get('campStartDate')?.value | date:'yyyy-MM-dd'}}"
             formControlName="campEndDate">
     </div>
     <div class="form-group">

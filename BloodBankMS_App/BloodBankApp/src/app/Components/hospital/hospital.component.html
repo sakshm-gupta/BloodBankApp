@@ -1,4 +1,43 @@
+<div class="card p-5 mx-auto" style="width: 80%;">
+  <a routerLink="/home">Back</a>
+  <h2 class="card-title mx-auto">Hospital List</h2>
+    <button class="btn btn-primary my-3" [routerLink]="['add']" >Add Hospital</button>
+    <div class="bb">
+      <button [routerLink]="['/blooddonor/add']" class="btn btn-primary my-3" style="width:10rem">Register Donor</button>
+      <button [routerLink]="['/blooddonordonation/add']" class="btn btn-primary my-3" style="width:10rem">Donate Blood</button>
+  </div>
+    <table class="table table-striped mt-5">
+      <thead>
+          <th>Id</th>
+          <th>Hospital Name</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Contact No</th>
+          <th>BloodBank Name</th>
+          <th>Actions</th>
+      </thead>
+ 
+      <tbody>
+          <tr *ngFor="let hos of HospitalList">
+              <td>{{hos.id}}</td>
+              <td>{{hos.hospitalName}}</td>
+              <td>{{hos.address}}</td>
+              <td>{{hos.city}}</td>
+              <td>{{hos.contactNo}}</td>
+              <td>{{hos.bloodBank.bloodBankName}}</td>
+              <td>
+                  <button [routerLink]="['updHospital',hos.id]"  class ="btn btn-warning m-2">Update</button>
+                  <button (click)="delete(hos.id)" class ="btn btn-danger m-2">Delete</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
 
+
+
+
+<!-- 
   
   <div class="topnav">
     <a routerLink="/home">Back</a>
@@ -39,7 +78,7 @@
 
 
 </table>
-  <!-- <footer>
+   <footer>
     <h4>COPYRIGHT © 2022<br>Blood Bank Management<br>ALL RIGHTS RESERVED.</h4>
   </footer> -->
-  
+   

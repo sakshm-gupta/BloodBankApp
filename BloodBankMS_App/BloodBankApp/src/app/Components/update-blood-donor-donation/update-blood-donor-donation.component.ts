@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,14 +19,21 @@ import { BlooddonorService } from 'src/app/Services/blood-donor.service';
 export class UpdateBloodDonorDonationComponent implements OnInit {
  
   donationForm!: FormGroup;
-  
+  campList!:BloodDonationCamp[];
+  date=new Date;
+  donorList!:BloodDonor[];
+  bloodBankList!:BloodBank[];
   constructor(private donationService: BloodDonorDonationService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private bloodBankService:BloodBankService,
+    private route: ActivatedRoute,
+    private bloodDonationCampService: BloodDonationCampService,
+    private bloodDonorService:BlooddonorService) { }
  
   ngOnInit(): void {
     let donationId = this.route.snapshot.params['id'];
     console.log('Donation id ' + donationId);
+    const datePipe = new DatePipe('en-US');
  
     this.donationService.getById(donationId).subscribe(donation =>{
       
@@ -37,17 +45,28 @@ export class UpdateBloodDonorDonationComponent implements OnInit {
         "hbCount":new FormControl(donation.hbCount,Validators.required),
         "bloodDonationCampId":new FormControl(donation.bloodDonationCampId,Validators.required),
         "bloodBankId":new FormControl(donation.bloodBankId,Validators.required),
-        "expiryDate":new FormControl(donation.expiryDate,Validators.required),
-        "bloodDonationDate":new FormControl(donation.bloodDonationDate,Validators.required),
+        "expiryDate":new FormControl(datePipe.transform(donation.expiryDate,'yyyy-MM-dd'),Validators.required),
+        "bloodDonationDate":new FormControl(datePipe.transform(donation.bloodDonationDate, 'yyyy-MM-dd'),Validators.required)
       });
     }, (err: any) =>{
       alert(err);
       console.log(err);
-    })
-    
+    });
+    this.bloodDonationCampService.getList().subscribe(list =>{
+      this.campList=list;
+      
+    }, err => {console.log(err);});
 
 
-    
+    this.bloodDonorService.getList().subscribe(list =>{
+      this.donorList=list;
+      
+    }, err => {console.log(err);});
+
+    this.bloodBankService.getList().subscribe(list =>{
+      this.bloodBankList=list;
+      
+    }, err => {console.log(err);});
   }
  
   onSubmit(){

@@ -14,6 +14,7 @@ import { BloodDonationCampService } from 'src/app/Services/blood-donation-camp.s
 export class AddBloodDonationCampComponent implements OnInit {
  
   campForm!: FormGroup;
+  date=new Date;
   bloodBankList!:BloodBank[];
   constructor(private campService: BloodDonationCampService,
     private router:Router,private bloodBankService:BloodBankService) { }

@@ -1,4 +1,4 @@
-
+<!-- 
 <header>
     <a routerLink="/home">Back</a>
     <h2>Blood Donation Camps</h2>
@@ -30,4 +30,41 @@
             </td>
         </tr>
     </tbody>
-</table>
+</table> -->
+
+<div class="card p-5 mx-auto" style="width: 100%;">
+    <a routerLink="/home">Back</a>
+    <h2 class="card-title mx-auto">Blood Donation Camps</h2>
+    <button class='btn btn-primary my-3 ' [routerLink]="['add']" >Add Camps</button>
+    <div class="bb">
+    <button [routerLink]="['/blooddonor/add']" class="btn btn-primary my-3" style="width:10rem">Register Donor</button>
+    <button [routerLink]="['/blooddonordonation/add']" class="btn btn-primary my-3" style="width:10rem">Donate Blood</button>
+</div>
+    <table class="table table-striped mt-5">
+        <thead>
+            <th>Id</th>
+            <th>Blood Donation Camp Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Blood Bank</th>
+            <th>Camp Start Date</th>
+            <th>Camp End Date</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of campList">
+                <td>{{c.id}}</td>
+                <td>{{c.campName}}</td>
+                <td>{{c.address}}</td>
+                <td>{{c.city}}</td>
+                <td>{{c.bloodBank.bloodBankName}}</td>
+                <td>{{c.campStartDate | date}}</td>
+                <td>{{c.campEndDate | date}}</td>
+                <td>
+                    <button [routerLink]="['update',c.id]" class="btn btn-warning m-2">Update</button>
+                    <button (click)="delete(c.id)" class="btn btn-danger m-2">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

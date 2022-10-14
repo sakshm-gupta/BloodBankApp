@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { BloodGroup } from '../Models/blood-group';
 import { BloodInventory } from '../Models/blood-inventory';
 
  
@@ -37,5 +38,9 @@ export class InventoryService {
  
   delete(id: number):Observable<any> {
     return this.client.delete<BloodInventory>(`${this.apiUrl}/${id}`);
+  }
+  
+  search(bloodGroup:BloodGroup): Observable<BloodInventory[]> {
+    return this.client.get<BloodInventory[]>(`${this.apiUrl}/bloodgroup/${bloodGroup}`);
   }
 }

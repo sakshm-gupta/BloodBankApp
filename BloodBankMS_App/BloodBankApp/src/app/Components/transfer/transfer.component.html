@@ -1,7 +1,7 @@
 <div class="topnav">
-    <a routerLink="/inventory">Back</a>
+    
     <h1>Transfer</h1>
-   <a id="logout" routerLink="/">Logout</a>
+   
 </div>
  
 <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
@@ -33,6 +33,6 @@
  
     <div class = "form-group">
         <button type="submit" class = "btn btn-primary" [disabled]="!transferForm.valid">Add</button>
-        <button class = "btn btn-secondary" [routerLink]="['/blooddonor']">Blood Donor List</button>
+        <button class = "btn btn-secondary" [routerLink]="['/inventory']">Inventory List</button>
     </div>
 </form>

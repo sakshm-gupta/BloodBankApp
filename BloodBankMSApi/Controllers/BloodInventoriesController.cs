@@ -28,6 +28,19 @@ namespace BloodBankMSApi.Controllers
         {
             return await _context.BloodInventories.Include(d=>d.BloodBank).ToListAsync();
         }
+        //---------------------------------
+        [HttpGet("bloodgroup/{bloodgroup}")]
+        public async Task<IEnumerable<BloodInventory>> SearchByBloodGroup(BloodGroup bloodgroup)
+        {
+            var query =
+                from bi in _context.BloodInventories
+                where
+                    (bi.BloodGroup == bloodgroup)
+                select bi;
+
+            return query.AsEnumerable();
+        }
+        //---------------------------------
 
         // GET: api/BloodInventories/5
         [HttpGet("{id}")]

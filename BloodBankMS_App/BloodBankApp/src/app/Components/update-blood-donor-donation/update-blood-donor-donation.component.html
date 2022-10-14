@@ -1,11 +1,9 @@
-
-
-
-
-<header><h1>UPDATE BLOOD DONOR DONATION DETAILS</h1></header>
+<header>
+    <h1>UPDATE BLOOD DONOR DONATION DETAILS</h1>
+</header>
 <div class="topnav">
-  <a routerLink="/blooddonordonation">Back</a>
- <a id="logout" routerLink="">Logout</a>
+    <a routerLink="/blooddonordonation">Back</a>
+
 </div>
 <br>
 <div>
@@ -15,16 +13,13 @@
             <label for="id">Blood Donation ID</label>
             <input type="number" readonly class="form-control" formControlName="id">
         </div>
+        <!------------------------------------------------------->
         <div class="form-group">
-            <label for="bloodDonorId">Blood Donor ID</label>
-            <input type="number" class="form-control" formControlName="bloodDonorId">
-        </div>
-        <!-- <div class="form-group">
             <label for="bloodDonorId">Blood Donor Name</label>
             <select class="form-control" formControlName="bloodDonorId">
                 <option *ngFor="let d of donorList" value="{{d.id}}">{{d.firstName}}</option>>
             </select>
-        </div> -->
+        </div>
         <div *ngIf="donationForm.get('bloodDonorId')?.invalid && 
             (donationForm.get('bloodDonorId')?.dirty || donationForm.get('bloodDonorId')?.touched)"
             class="alert alert-danger">
@@ -34,9 +29,12 @@
         </div>
         <!------------------------------->
 
+        
         <div class="form-group">
-            <label for="bloodBankId">Blood Bank ID</label>
-            <input type="number" class="form-control" formControlName="bloodBankId">
+            <label for="bloodBankId">BloodBank Name</label>
+            <select class="form-control" formControlName="bloodBankId">
+                <option *ngFor="let d of bloodBankList" value="{{d.id}}">{{d.bloodBankName}}</option>>
+            </select>
         </div>
         <div *ngIf="donationForm.get('bloodBankId')?.invalid && 
             (donationForm.get('bloodBankId')?.dirty || donationForm.get('bloodBankId')?.touched)"
@@ -61,25 +59,24 @@
 
 
         <div class="form-group">
-            <label for="weight">Weight</label>
+            <label for="weight">Weight(in Kg)</label>
             <input type="number" class="form-control" formControlName="weight">
         </div>
         <div *ngIf="donationForm.get('weight')?.invalid && 
-        (donationForm.get('weight')?.dirty || donationForm.get('weight')?.touched)"
-        class="alert alert-danger">
+        (donationForm.get('weight')?.dirty || donationForm.get('weight')?.touched)" class="alert alert-danger">
             <div *ngIf="donationForm.get('weight')?.errors?.['required']">
-            weight is required.
+                weight is required.
             </div>
         </div>
 
 
         <div class="form-group">
-            <label for="hbCount">HB Count</label>
+            <label for="hbCount">HB Count(g/dl)</label>
             <input type="number" class="form-control" formControlName="hbCount">
         </div>
+
         <div *ngIf="donationForm.get('hbCount')?.invalid && 
-            (donationForm.get('hbCount')?.dirty || donationForm.get('hbCount')?.touched)"
-            class="alert alert-danger">
+            (donationForm.get('hbCount')?.dirty || donationForm.get('hbCount')?.touched)" class="alert alert-danger">
             <div *ngIf="donationForm.get('hbCount')?.errors?.['required']">
                 hbCount is required.
             </div>
@@ -90,6 +87,15 @@
             <label for="bloodDonationCampId">Blood Donation Camp ID</label>
             <input type="number" class="form-control" formControlName="bloodDonationCampId">
         </div>
+
+        <div class="form-group">
+            <label for="bloodDonationCampId"> Blood Donation Camp Name</label>
+            <select class="form-control" formControlName="bloodDonationCampId">
+                <option *ngFor="let d of campList" value="{{d.id}}">{{d.campName}}</option>>
+            </select>
+        </div>
+
+
         <div *ngIf="donationForm.get('bloodDonationCampId')?.invalid && 
             (donationForm.get('bloodDonationCampId')?.dirty || donationForm.get('bloodDonationCampId')?.touched)"
             class="alert alert-danger">
@@ -101,7 +107,8 @@
 
         <div class="form-group">
             <label for="bloodDonationDate">Blood Donation Date</label>
-            <input type="datetime" class="form-control" formControlName="bloodDonationDate">
+            <input type="date" class="form-control" min="{{date | date:'yyyy-MM-dd'}}"
+                formControlName="bloodDonationDate">
         </div>
         <div *ngIf="donationForm.get('bloodDonationDate')?.invalid && 
             (donationForm.get('bloodDonationDate')?.dirty || donationForm.get('bloodDonationDate')?.touched)"
@@ -114,7 +121,7 @@
 
         <div class="form-group">
             <label for="expiryDate">Expiry Date</label>
-            <input type="datetime" class="form-control" formControlName="expiryDate">
+            <input type="date" class="form-control" formControlName="expiryDate">
         </div>
         <div *ngIf="donationForm.get('expiryDate')?.invalid && 
             (donationForm.get('expiryDate')?.dirty || donationForm.get('expiryDate')?.touched)"
@@ -132,7 +139,7 @@
 
 
 
-<!-- 
+    <!-- 
  <header><h1>UPDATE BLOOD DONOR DONATION DETAILS</h1></header>
  <div class="topnav">
    <a routerLink="/blooddonordonation">Back</a>

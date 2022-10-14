@@ -10,6 +10,7 @@ import { BloodDonationCampComponent } from './Components/blood-donation-camp/blo
 import { HomeComponent } from './Components/home/home.component';
 import { HospitalComponent } from './Components/hospital/hospital.component';
 import { LoginComponent } from './Components/login/login.component';
+import { SearchInventoryComponent } from './Components/search-inventory/search-inventory.component';
 import { TransferComponent } from './Components/transfer/transfer.component';
 import { UpdateBloodBankComponent } from './Components/update-blood-bank/update-blood-bank.component';
 import { UpdateBloodDonationCampComponent } from './Components/update-blood-donation-camp/update-blood-donation-camp.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
   {path:'inventory',component:ViewInventoryComponent},
   {path:'inventory/update/:id',component:UpdateInventoryComponent},
   {path:'inventory/add',component:TransferComponent},
+  {path:'inventory/search',component:SearchInventoryComponent},
 
   {path:'blooddonordonation',component:ViewBloodDonorDonationComponent},
   {path:'blooddonordonation/add',component:AddBloodDonorDonationComponent},
