@@ -7,27 +7,62 @@
         <input type="text" class="form-control"
         formControlName="hospitalName">
     </div>
+    <div *ngIf="hospForm1.get('hospitalName')?.invalid && 
+            (hospForm1.get('hospitalName')?.dirty || hospForm1.get('hospitalName')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="hospForm1.get('hospitalName')?.errors?.['required']">
+                hospitalName is required.
+            </div>
+        </div>
+        <!------------------------------------------------------ -->
+    
     <div class="form-group">
         <label for="address">Hospital Address</label>
         <input type="text" class="form-control"
         formControlName="address">
     </div>
+    <div *ngIf="hospForm1.get('address')?.invalid && 
+            (hospForm1.get('address')?.dirty || hospForm1.get('address')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="hospForm1.get('address')?.errors?.['required']">
+                address is required.
+            </div>
+        </div>
+        <!------------------------------------------------------ -->
     <div class="form-group">
         <label for="city">Hospital City</label>
         <input type="text" class="form-control"
         formControlName="city">
     </div>
+    <div *ngIf="hospForm1.get('city')?.invalid && 
+            (hospForm1.get('city')?.dirty || hospForm1.get('city')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="hospForm1.get('city')?.errors?.['required']">
+                city is required.
+            </div>
+        </div>
+        <!------------------------------------------------------ -->
     <div class="form-group">
         <label for="contactNo">Hospital Contact</label>
         <input type="number" class="form-control"
         formControlName="contactNo">
     </div>
-    <div class="form-group">
-        <label for="bloodBankId">BloodBank ID</label>
-        <input type="number" class="form-control"
-        formControlName="bloodBankId">
-    </div>
+    <div *ngIf="hospForm1.get('contactNo')?.invalid && 
+            (hospForm1.get('contactNo')?.dirty || hospForm1.get('contactNo')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="hospForm1.get('contactNo')?.errors?.['required']">
+                contactNo is required.
+            </div>
+        </div>
+        <!------------------------------------------------------ -->
     
+    <div class="form-group">
+        <label for="bloodBankId">BloodBank Name</label>
+        <select class="form-control" formControlName="bloodBankId">
+            <option *ngFor="let d of bloodBankList" value="{{d.id}}">{{d.bloodBankName}}</option>>
+        </select>
+    </div>
+    <!-- ----------------------------------------------------------------- -->
     <div class="form-group">
         <button type="submit" class="btn btn-primary" >Add</button>
         <button class="btn btn-secondary" routerLink="/hospital">Hospital List</button>

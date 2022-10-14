@@ -28,6 +28,8 @@ export class AddblooddonorComponent implements OnInit {
         "bloodGroup" :  new FormControl("",[Validators.required])
       }
     )
+
+    
   }
  
   onSubmit(){

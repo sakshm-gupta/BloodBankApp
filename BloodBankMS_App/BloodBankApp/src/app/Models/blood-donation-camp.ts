@@ -1,3 +1,5 @@
+import { BloodBank } from "./blood-bank";
+
 export class BloodDonationCamp {
 
     id!:number;
@@ -7,5 +9,6 @@ export class BloodDonationCamp {
     bloodBankId!:number;
     campStartDate!:Date;
     campEndDate!:Date;
+    bloodBank!:BloodBank;
 }
 

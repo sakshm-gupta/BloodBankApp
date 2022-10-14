@@ -26,7 +26,7 @@ namespace BloodBankMSApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BloodInventory>>> GetBloodInventories()
         {
-            return await _context.BloodInventories.ToListAsync();
+            return await _context.BloodInventories.Include(d=>d.BloodBank).ToListAsync();
         }
 
         // GET: api/BloodInventories/5

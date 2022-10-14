@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BloodBank } from 'src/app/Models/blood-bank';
 import { Hospital } from 'src/app/Models/hospital';
+import { BloodBankService } from 'src/app/Services/blood-bank.service';
 import { HospitalService } from 'src/app/Services/hospital.service';
 
 @Component({
@@ -12,7 +14,8 @@ import { HospitalService } from 'src/app/Services/hospital.service';
 export class AddHospitalComponent implements OnInit {
   
 hospForm1!:FormGroup;
-  constructor(private hospService:HospitalService,private router:Router) { }
+bloodBankList!:BloodBank[];
+  constructor(private hospService:HospitalService,private router:Router,private bloodBankService:BloodBankService) { }
 
   ngOnInit(): void {
     this.hospForm1=new FormGroup({
@@ -22,6 +25,10 @@ hospForm1!:FormGroup;
         "contactNo": new FormControl("",Validators.required),
         "bloodBankId": new FormControl("",Validators.required),
     });
+    this.bloodBankService.getList().subscribe(list =>{
+      this.bloodBankList=list;
+    }, err => console.log(err)
+    )
   }
   
   onSubmit(){

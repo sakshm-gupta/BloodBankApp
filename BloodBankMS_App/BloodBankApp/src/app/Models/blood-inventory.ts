@@ -1,3 +1,4 @@
+import { BloodBank } from "./blood-bank";
 import { BloodGroup } from "./blood-group";
 
 export class BloodInventory {
@@ -6,4 +7,5 @@ export class BloodInventory {
     numberofBottles!:number;
     bloodBankId!:number;
     expiryDate!:Date;
+    bloodBank!:BloodBank;
 }

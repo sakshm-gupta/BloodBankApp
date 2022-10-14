@@ -4,7 +4,7 @@
 
 namespace BloodBankMSApi.Migrations
 {
-    public partial class secondmigration : Migration
+    public partial class SecondMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

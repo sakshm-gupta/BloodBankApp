@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BloodBank } from 'src/app/Models/blood-bank';
 import { BloodDonationCamp } from 'src/app/Models/blood-donation-camp';
+import { BloodBankService } from 'src/app/Services/blood-bank.service';
 import { BloodDonationCampService } from 'src/app/Services/blood-donation-camp.service';
  
 @Component({
@@ -12,6 +14,7 @@ import { BloodDonationCampService } from 'src/app/Services/blood-donation-camp.s
 export class UpdateBloodDonationCampComponent implements OnInit {
  
   campForm!: FormGroup;
+  
   //bloodDonationCampServices: any;
  
   constructor(private campService: BloodDonationCampService,
@@ -19,9 +22,11 @@ export class UpdateBloodDonationCampComponent implements OnInit {
     private route: ActivatedRoute) { }
  
   ngOnInit(): void {
+    
+    
     let campId = this.route.snapshot.params['id'];
     console.log('Camp id ' + campId);
- 
+    
     //get dept details by calling service, id
     this.campService.getById(campId).subscribe(camp =>{
       

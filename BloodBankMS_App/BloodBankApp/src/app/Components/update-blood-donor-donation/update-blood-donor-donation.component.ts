@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BloodBank } from 'src/app/Models/blood-bank';
+import { BloodDonationCamp } from 'src/app/Models/blood-donation-camp';
+import { BloodDonor } from 'src/app/Models/blood-donor';
 import { BloodDonorDonation } from 'src/app/Models/blood-donor-donation';
+import { BloodBankService } from 'src/app/Services/blood-bank.service';
+import { BloodDonationCampService } from 'src/app/Services/blood-donation-camp.service';
 import { BloodDonorDonationService } from 'src/app/Services/blood-donor-donation.service';
+import { BlooddonorService } from 'src/app/Services/blood-donor.service';
  
 @Component({
   selector: 'app-update-donor-donation',
@@ -38,6 +44,10 @@ export class UpdateBloodDonorDonationComponent implements OnInit {
       alert(err);
       console.log(err);
     })
+    
+
+
+    
   }
  
   onSubmit(){

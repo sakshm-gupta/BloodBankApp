@@ -36,7 +36,8 @@ namespace BloodBankMSApi.Models
         [Required]
         public DateTime ExpiryDate { get; set; }
 
-        [ForeignKey("BloodBank")]
+        
         public int BloodBankId { get; set; }
+        public virtual BloodBank? BloodBank { get; set; }
     }
 }

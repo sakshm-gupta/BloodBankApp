@@ -7,31 +7,95 @@
         <input type="text" class="form-control"
             formControlName="campName">
     </div>
+
+    <div *ngIf="campForm.get('campName')?.invalid && 
+            (campForm.get('campName')?.dirty || campForm.get('campName')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="campForm.get('campName')?.errors?.['required']">
+                campName is required.
+            </div>
+    </div>
+        <!-- ----------------------------------------------------- -->
+
     <div class="form-group">
         <label for="address">Camp Address</label>
         <input type="text" class="form-control"
             formControlName="address">
     </div>
+    <div *ngIf="campForm.get('address')?.invalid && 
+            (campForm.get('address')?.dirty || campForm.get('address')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="campForm.get('address')?.errors?.['required']">
+                address is required.
+            </div>
+    </div>
+        <!-- ----------------------------------------------------- -->
+
+    
     <div class="form-group">
         <label for="city">Camp City</label>
         <input type="text" class="form-control"
             formControlName="city">
     </div>
-    <div class="form-group">
-        <label for="bloodBankId">Blood Bank Id</label>
-        <input type="number" class="form-control"
-            formControlName="bloodBankId">
+    <div *ngIf="campForm.get('city')?.invalid && 
+            (campForm.get('city')?.dirty || campForm.get('city')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="campForm.get('city')?.errors?.['required']">
+                city is required.
+            </div>
     </div>
+
+        <!--------------------------------------------------------->
+
+    
+    <div class="form-group">
+        <label for="bloodBankId"> Blood Bank</label>
+        <select class="form-control" formControlName="bloodBankId">
+            <option *ngFor="let d of bloodBankList" value="{{d.id}}">{{d.bloodBankName}}</option>>
+        </select>
+    </div>
+    <div *ngIf="campForm.get('bloodBankId')?.invalid && 
+            (campForm.get('bloodBankId')?.dirty || campForm.get('bloodBankId')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="campForm.get('bloodBankId')?.errors?.['required']">
+                bloodBankId is required.
+            </div>
+    </div>
+
+        <!-- ----------------------------------------------------- -->
+
     <div class="form-group">
         <label for="campStartDate">Camp Start Date</label>
         <input type="date" class="form-control"
             formControlName="campStartDate">
     </div>
+
+    <div *ngIf="campForm.get('campStartDate')?.invalid && 
+            (campForm.get('campStartDate')?.dirty || campForm.get('campStartDate')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="campForm.get('campStartDate')?.errors?.['required']">
+                campStartDate is required.
+            </div>
+    </div>
+
+        <!-- ----------------------------------------------------- -->
+
     <div class="form-group">
         <label for="campEndDate">Camp End Date</label>
         <input type="date" class="form-control"
             formControlName="campEndDate">
     </div>
+
+    <div *ngIf="campForm.get('campEndDate')?.invalid && 
+            (campForm.get('campEndDate')?.dirty || campForm.get('campEndDate')?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="campForm.get('campEndDate')?.errors?.['required']">
+                campEndDate is required.
+            </div>
+    </div>
+
+        <!-- ----------------------------------------------------- -->
+
     <div class="form-group">
         <button type="submit" class="btn btn-primary" [disabled]="!campForm.valid">Add</button>
         <button class="btn btn-secondary" [routerLink]="['blooddonationcamp']">Camp List</button>

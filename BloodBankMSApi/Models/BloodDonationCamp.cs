@@ -21,7 +21,7 @@ namespace BloodBankMSApi.Models
         
         public int BloodBankId { get; set; }
         
-        //public virtual BloodBank? BloodBank { get; set; }
+        public virtual BloodBank? BloodBank { get; set; }
         
         [Required]
         [DataType(DataType.Date)]

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BloodBank } from 'src/app/Models/blood-bank';
 import { BloodDonationCamp } from 'src/app/Models/blood-donation-camp';
+import { BloodBankService } from 'src/app/Services/blood-bank.service';
 import { BloodDonationCampService } from 'src/app/Services/blood-donation-camp.service';
  
 @Component({
@@ -12,9 +14,9 @@ import { BloodDonationCampService } from 'src/app/Services/blood-donation-camp.s
 export class AddBloodDonationCampComponent implements OnInit {
  
   campForm!: FormGroup;
- 
+  bloodBankList!:BloodBank[];
   constructor(private campService: BloodDonationCampService,
-    private router:Router) { }
+    private router:Router,private bloodBankService:BloodBankService) { }
  
   ngOnInit(): void {
     this.campForm = new FormGroup({
@@ -26,6 +28,11 @@ export class AddBloodDonationCampComponent implements OnInit {
       "campEndDate": new FormControl("", Validators.required),
       
     })
+
+    this.bloodBankService.getList().subscribe(list =>{
+      this.bloodBankList=list;
+    }, err => console.log(err)
+    )
   }
  
   onSubmit(){

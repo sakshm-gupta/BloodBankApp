@@ -1,13 +1,16 @@
-<a routerLink="/home">Back</a>
-<a [routerLink]="['add']" class="btn btn-link">Add</a>
- 
+
+<header>
+    <a routerLink="/home">Back</a>
+    <h2>Blood Donation Camps</h2>
+</header>
+<a [routerLink]="['add']" class="btn btn-primary">Add Camps</a>
 <table class="table table-striped">
     <thead>
         <th>Id</th>
         <th>Blood Donation Camp Name</th>
         <th>Address</th>
         <th>City</th>
-        <th>Blood Bank Id</th>
+        <th>Blood Bank</th>
         <th>Camp Start Date</th>
         <th>Camp End Date</th>
         <th>Actions</th>
@@ -18,9 +21,9 @@
             <td>{{c.campName}}</td>
             <td>{{c.address}}</td>
             <td>{{c.city}}</td>
-            <td>{{c.bloodBankId}}</td>
-            <td>{{c.campStartDate}}</td>
-            <td>{{c.campEndDate}}</td>
+            <td>{{c.bloodBank.bloodBankName}}</td>
+            <td>{{c.campStartDate | date}}</td>
+            <td>{{c.campEndDate | date}}</td>
             <td>
                 <button [routerLink]="['update', c.id]" class="btn btn-primary">Update</button>
                 <button (click)="delete(c.id)" class="btn btn-danger">Delete</button>

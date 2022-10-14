@@ -2,7 +2,7 @@
   
   <div class="topnav">
     <a routerLink="/home">Back</a>
-    <h2>HOSPITAL MENU</h2>
+    <h2>Hospital Menu</h2>
     <button class="btn btn-primary my-3" [routerLink]="['add']">Add Hospital</button>
    
   </div>
@@ -25,7 +25,8 @@
             <td>{{hos.address}}</td>
             <td>{{hos.city}}</td>
             <td>{{hos.contactNo}}</td>
-            <td>{{hos.bloodBankId}}</td>
+            
+            <td>{{hos.bloodBank.bloodBankName}}</td>
             
 
 

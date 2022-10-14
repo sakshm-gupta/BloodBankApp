@@ -1,6 +1,14 @@
-<h2>Donation List</h2>
-<a routerLink="/home">Back</a>
+
+
+
+<header>
+    
+    <a routerLink="/home">Back</a>
+    <h2>Donation List</h2>
+
+</header>
 <a [routerLink]="['add']" class="btn btn-primary">Add Donation</a>
+
 <table class="table table-striped">
     <thead>
         <th>Id</th>
@@ -9,7 +17,7 @@
         <th>Weight(in Kg)</th>
         <th>HB Count((g/dl)</th>
         <th>Blood Donation Camp</th>
-        <th>Blood Bank ID</th>
+        <th>Blood Bank</th>
         <th>Donation Date</th>
         <th>Expiry Date</th>
     </thead>
@@ -21,7 +29,7 @@
             <td>{{donation.weight}}</td>
             <td>{{donation.hbCount}}</td>
             <td>{{donation.bloodDonationCamp.campName}}</td>
-            <td>{{donation.bloodBankId}}</td>
+            <td>{{donation.bloodBank.bloodBankName}}</td>
             <td>{{donation.bloodDonationDate |date}}</td>
             <td>{{donation.expiryDate | date}}</td>
             <td>
