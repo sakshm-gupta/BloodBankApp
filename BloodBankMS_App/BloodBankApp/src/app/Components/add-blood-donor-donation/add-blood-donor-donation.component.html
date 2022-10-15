@@ -103,7 +103,7 @@
             </div>
     </div>
         <!------------------------------------------------------ -->
-         <div class="form-group">
+         <!-- <div class="form-group">
              <label for="expiryDate">Expiry Date</label>
              <input type="date" class="form-control" formControlName="expiryDate">
          </div>
@@ -113,7 +113,7 @@
             <div *ngIf="donationForm.get('expiryDate')?.errors?.['required']">
                 expiryDate is required.
             </div>
-    </div>
+    </div> -->
         <!------------------------------------------------------ -->
          <div class="form-group">
              <button class="btn btn-primary" [disabled]="!donationForm.valid" type="submit">Add</button>

@@ -59,6 +59,8 @@ namespace BloodBankMSApi.Controllers
             {
                 return BadRequest(ModelState);
             }
+            // update expiry date based on updated donation date
+            bloodDonorDonation.ExpiryDate = bloodDonorDonation.BloodDonationDate.AddDays(40);
             _context.Entry(bloodDonorDonation).State = EntityState.Modified;
 
             try
@@ -89,6 +91,8 @@ namespace BloodBankMSApi.Controllers
             {
                 return BadRequest(ModelState);
             }
+            // donation date + 40 days = expiry date
+            bloodDonorDonation.ExpiryDate = bloodDonorDonation.BloodDonationDate.AddDays(40);
 
             BloodGroup bloodGroup = _context.BloodDonors.FirstOrDefault(d => d.Id == bloodDonorDonation.BloodDonorId).BloodGroup;
             BloodInventory inventory = _context.BloodInventories.FirstOrDefault(d => d.BloodBankId == bloodDonorDonation.BloodBankId && d.BloodGroup == bloodGroup);
@@ -97,13 +101,16 @@ namespace BloodBankMSApi.Controllers
                 inventory = new BloodInventory();
                 inventory.BloodBankId = bloodDonorDonation.BloodBankId;
                 inventory.BloodGroup = bloodGroup;
+
+                // add
+                inventory.ExpiryDate = bloodDonorDonation.BloodDonationDate.AddDays(40);
             }
             inventory.NumberofBottles += bloodDonorDonation.NumberofBottle;
+            // donation date + 40 days = expiry date
+            inventory.ExpiryDate = bloodDonorDonation.BloodDonationDate.AddDays(40);
             _context.BloodInventories.Update(inventory);
+            
             //await _context.SaveChangesAsync();
-
-
-
             _context.BloodDonorDonations.Add(bloodDonorDonation);
             await _context.SaveChangesAsync();
 

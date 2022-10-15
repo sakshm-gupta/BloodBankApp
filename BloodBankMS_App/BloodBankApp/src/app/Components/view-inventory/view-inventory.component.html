@@ -1,9 +1,26 @@
 <div class="card p-5 mx-auto" style="width: 70%;">
     <a routerLink="/home">Back</a>
-    <h2 class="card-title mx-auto">Inventory List</h2>
+    <h2 class="card-title mx-auto">Inventory List         <img style="width:50px;margin-left: 10px;"src="./assets/inv.png"></h2>
     <button class="btn btn-primary my-3" [routerLink]="['add']">Transfer Inventory</button>
     <!-- <button class="btn btn-primary my-3" [routerLink]="['search']">Search Inventory</button> -->
+    <div class="al">
 
+        <form [formGroup]="invForm">
+            <div>
+                <h6><label for="bloodGroup">Search Blood Group</label></h6>
+
+                <select class="form-control" style="width:380px;" formControlName="bloodGroup" (change)="filter()">
+
+                    <option *ngFor="let name of enumKeys" [value]="name">{{ name }}</option>
+                </select>
+
+            </div>
+
+        </form>
+
+        <button class="btn btn-primary my-3" (click)="showAll()">View all</button>
+
+    </div>
     <table class="table table-striped mt-5">
         <thead>
             <th>Id</th>
@@ -14,17 +31,19 @@
             <th>Actions</th>
         </thead>
         <tbody class="table-group-divider">
-            <tr *ngFor="let i of inventoryList">
+            <tr *ngFor="let i of filterList ">
                 <td>{{i.id}}</td>
                 <td>{{bloodGroup[i.bloodGroup]}}</td>
                 <td>{{i.numberofBottles}}</td>
                 <td>{{i.bloodBank.bloodBankName}}</td>
-                <td>{{i.expiryDate |  date}}</td>
+                <td>{{i.expiryDate | date}}</td>
                 <td>
-                    
-                    <button (click)="delete(i.id)" class="btn btn-danger m-2">Delete</button>
+                    <div *ngIf="expired(i.expiryDate)">
+
+                        <button (click)="delete(i.id)" class="btn btn-danger m-2">Delete</button>
+                    </div>
                 </td>
             </tr>
         </tbody>
     </table>
-    </div>
+</div>

@@ -39,8 +39,8 @@ export class AddBloodDonorDonationComponent implements OnInit {
       "hBCount":new FormControl("",Validators.required),
       "bloodDonationCampId":new FormControl("",Validators.required),
       "bloodBankId":new FormControl("",Validators.required),
-      "expiryDate":new FormControl(datePipe.transform("", 'yyyy-MM-dd'),Validators.required),
-      "bloodDonationDate":new FormControl(datePipe.transform("", 'yyyy-MM-dd'),Validators.required)
+      // "expiryDate":new FormControl(datePipe.transform("", 'yyyy-MM-dd'),Validators.required),
+      "bloodDonationDate":new FormControl(null,Validators.required)
     });
 
     this.bloodDonorService.getList().subscribe(list =>{

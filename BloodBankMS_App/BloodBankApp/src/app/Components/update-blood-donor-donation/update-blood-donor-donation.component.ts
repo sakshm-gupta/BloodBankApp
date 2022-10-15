@@ -45,7 +45,7 @@ export class UpdateBloodDonorDonationComponent implements OnInit {
         "hbCount":new FormControl(donation.hbCount,Validators.required),
         "bloodDonationCampId":new FormControl(donation.bloodDonationCampId,Validators.required),
         "bloodBankId":new FormControl(donation.bloodBankId,Validators.required),
-        "expiryDate":new FormControl(datePipe.transform(donation.expiryDate,'yyyy-MM-dd'),Validators.required),
+        // "expiryDate":new FormControl(datePipe.transform(donation.expiryDate,'yyyy-MM-dd'),Validators.required),
         "bloodDonationDate":new FormControl(datePipe.transform(donation.bloodDonationDate, 'yyyy-MM-dd'),Validators.required)
       });
     }, (err: any) =>{
