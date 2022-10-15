@@ -12,7 +12,7 @@ namespace BloodBankMSApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+    //[Authorize]
     public class BloodBanksController : ControllerBase
     {
         private readonly BloodBankMSContext _context;
@@ -81,6 +81,7 @@ namespace BloodBankMSApi.Controllers
         // POST: api/BloodBanks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        
         public async Task<ActionResult<BloodBank>> PostBloodBank(BloodBank bloodBank)
         {
 

@@ -1,6 +1,8 @@
-<header><h1>ADD BLOOD DONOR DONATION DETAILS</h1></header>
- <div class="topnav">
+<header>
    <a routerLink="/blooddonordonation">Back</a>
+    
+    <h1>ADD BLOOD DONOR DONATION DETAILS</h1></header>
+ <div class="topnav">
   
  </div>
  <br>
@@ -11,7 +13,7 @@
          <div class="form-group">
             <label for="bloodDonorId">Blood Donor Name</label>
             <select class="form-control" formControlName="bloodDonorId">
-                <option *ngFor="let d of donorList" value="{{d.id}}">{{d.firstName}}</option>>
+            <option *ngFor="let d of donorList" value="{{d.id}}">{{d.firstName}}({{d.contactNo}})</option>>
             </select>
         </div>
          <div *ngIf="donationForm.get('bloodDonorId')?.invalid && 
