@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import{HttpClientModule} from '@angular/common/http';
+import{HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -26,6 +26,7 @@ import { UpdateblooddonorComponent } from './Components/update-blood-donor/updat
 import { AddblooddonorComponent } from './Components/add-blood-donor/add-blood-donor.component';
 import { TransferComponent } from './Components/transfer/transfer.component';
 import { SearchInventoryComponent } from './Components/search-inventory/search-inventory.component';
+import { JwtInterceptor } from './Services/jwt.interceptor';
 
 
 
@@ -56,15 +57,14 @@ import { SearchInventoryComponent } from './Components/search-inventory/search-i
     AddblooddonorComponent,
     TransferComponent,
     SearchInventoryComponent
-    
-    
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,HttpClientModule,ReactiveFormsModule,FormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

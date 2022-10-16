@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BloodBankMSApi.Models;
 using BloodBankMSApi.Models.Transfer;
-
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace BloodBankMSApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class TransfersController : ControllerBase
     {
         private readonly BloodBankMSContext _context;

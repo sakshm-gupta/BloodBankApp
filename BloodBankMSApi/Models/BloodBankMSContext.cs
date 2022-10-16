@@ -7,8 +7,7 @@ namespace BloodBankMSApi.Models
     public class BloodBankMSContext : DbContext
     {
         public BloodBankMSContext(DbContextOptions options) : base(options)
-        {
-            
+        {            
         }
         
         public DbSet<BloodBank> BloodBanks { get; set; }

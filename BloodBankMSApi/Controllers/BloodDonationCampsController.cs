@@ -12,7 +12,8 @@ namespace BloodBankMSApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+    [Authorize]
+
     public class BloodDonationCampsController : ControllerBase
     {
         private readonly BloodBankMSContext _context;
